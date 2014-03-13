@@ -1,0 +1,2 @@
+[04-Jul-2013 06:07:24 -0500]: DB Error: Configuration error. Unsupported database driver:  in /home/trollosx/public_html/web/users/admin/applications/mail/program/lib/Roundcube/rcube_db.php on line 75 (GET /web/users/admin/applications/mail/index.php)
+[04-Jul-2013 06:07:31 -0500]: DB Error: Configuration error. Unsupported database driver:  in /home/trollosx/public_html/web/users/admin/applications/mail/program/lib/Roundcube/rcube_db.php on line 75 (GET /web/users/admin/applications/mail/index.php)

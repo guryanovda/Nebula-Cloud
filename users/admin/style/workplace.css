@@ -1,0 +1,87 @@
+body{-moz-user-select: none;-khtml-user-select: none;user-select: none; background-image:url(theme/wlp.jpg);  background-repeat: no-repeat; background-size: cover;  }
+A.start{position:absolute; width:70px; height:35px; left:0; top:0px; z-index:10}
+input.google_wiget{position:absolute; right:0; top: 41px; color:#999999; font-family: "Adobe Minion Cyrillic", sans-serif}
+div.clock{position:absolute; right:40px; top: 200px;}
+.style1 {color: #FF0000; cursor: default}
+span.fmngmenu{color: #FFFFFF; font-size:13px; font-weight: bold;}
+a.fmngmenu{color: #000000}
+givyheader{color: #000066;}
+DIV.move{position:absolute; width:450px; height:350px; z-index:1; left: 250px; top: 250px;}
+DIV.move2{position:absolute; width:450px; height:50px; z-index:2; left: 8px; background-image:url(bgwnd.png)}
+DIV.move3{position:absolute; width:375px; height:305px; z-index:2; left: 46px; top: 50px}
+DIV.left{position:absolute; width:38px; height:305px; z-index:3; left: 8px; top: 50px; background-image:url(bgwnd.png) }
+DIV.right{position:absolute; width:38px; height:305px; z-index:12; right: -8px; top: 50px; background-image:url(bgwnd.png) }
+DIV.bottom{position:absolute; width:450px; height:38px; z-index:3; left: 8px; bottom: -43px; background-image:url(bgwnd.png) }
+DIV.close{position:absolute; width:27px; height:15px; z-index:3; right: 0px; top: 0px; background-image:url(close.png); }
+div{-moz-user-select: none;-khtml-user-select: none;user-select: none;}
+.style2 {color: #FFFFFF;}
+.wnd_head {color: #FFFFFF; font-weight: bold; text-align: right;}
+#aol-header-query, #aol-header-search-ghost { 
+color: #626262;
+float: left;
+font-size: 14px;
+font-weight: 700;
+height: 25px;
+margin-top: 6px;
+overflow-x: hidden;
+overflow-y: hidden;
+padding-left: 5px;
+padding-right: 0px;
+width: 200px;
+ }
+ #aol-header-search-button { 
+background-attachment: scroll;
+background-clip: border-box;
+background-color: #000000;
+background-origin: padding-box;
+background-position: 0% 0%;
+background-repeat: repeat;
+background-size: auto;
+border-bottom-color: currentColor;
+border-bottom-style: none;
+border-bottom-width: 0px;
+border-left-color: currentColor;
+border-left-style: none;
+border-left-width: 0px;
+border-right-color: currentColor;
+border-right-style: none;
+border-right-width: 0px;
+border-top-color: currentColor;
+border-top-style: none;
+border-top-width: 0px;
+color: #ffffff;
+cursor: pointer;
+float: left;
+font-family: "Arial", "Helvetica", sans-serif;
+font-size: 16px;
+font-weight: 700;
+height: 35px;
+margin-left: 2px;
+margin-top: 6px;
+width: 80px;
+ }
+ #dragfile{
+	 position:absolute;
+	 bottom:0;
+	 right:0;
+	width: 100%;
+	height: 100%;
+	text-align:center;
+	color:#000000;
+	font-size:16pt;
+	display:table-cell;
+	vertical-align:middle;
+}
+ #report{
+	 position:absolute;
+	 bottom:32px;
+	 left:0px;
+	 background-image: url(theme/fm.png);
+	width: 400px;
+	text-align:left;
+	color:#ffffff;
+	font-size:14pt;
+	display:table-cell;
+	vertical-align:middle;
+}
+.menu {position:absolute; bottom:-10px; left:5px;}
