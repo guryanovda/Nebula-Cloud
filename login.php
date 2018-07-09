@@ -7,46 +7,73 @@ endif;
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Nebula V Cloub Builder | Авторизация</title>
+    <title>Nebula V Cloud Builder | Авторизация</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="style/css/login.css" rel="stylesheet" media="screen">
-    <link href="style/libs/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
 </head>
 
 <body>
-<img id='logo' src="style/img/logo.png" style="position: absolute; bottom: 140px; height: 30px;" />
-<div style="position: absolute; bottom: 10px; color: #fff; font-size: 120pt;  font-family: Arial;" id="hours"></div>
-<div style="position: absolute; bottom: 60px; color: #fff; font-size: 12pt;  font-family: Tahoma;" id="week"></div>
-<div style="position: absolute; bottom: 30px; color: #fff;" id="data"><span style="font-size: 20pt;  font-family: Arial;" id="day"></span><span style="font-size: 20pt;  font-family: Tahoma;" id="month"></span></div>
-<div id="auth">
-    <div class="arrow-box" id="arrow" style="position: absolute; bottom: 205px; width: 400px;"><br><input type="submit" class="btn btn-primary" style="position: relative;bottom: 10px; right: 10px; " value="Войти">
-        <a style="color:#fff;font-size:8pt;position:absolute;bottom:14px;left:10px;">Забыли пароль?</a><br></div>
-    <div id='loginform' style="position: absolute; bottom: 250px; height: 180px; width: 400px; background-color: #f5f5f5; border-top-left-radius: 7px; border-top-right-radius: 7px;">
-        <div class="popover-title" style="height: 50px;background-color: #fff;"><span style="position: relative; top: 16px; left:125px; font-size: 16pt; color: #777;">Авторизация</span></div>
-        <div class="popover-content" style="position: absolute; left: 30px;" >
-            <form class="form-horizontal" method="post" action="kernel/1.php">
-                <input type="text" id="login" name="login" placeholder="Имя пользователя" style="width: 250px;">
-                <input type="password" id="password" name="password" placeholder="Пароль" style="width: 250px;">
-                <input type="submit" style="background: transparent url(style/img/ok.png) no-repeat center top; border: 0; position: relative; bottom: 95px; left: 30px; height: 42px; width: 40px" value="" />
-            </form>
+
+<div class="container-fluid">
+    <form>
+    <div class="modal fade bd-example-modal-sm" id="exampleModalCenter">
+
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nebula Cloud Builder</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                                <img src="style/img/nebula.png" class="col-12" style="height: 250px">
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <br>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Имя пользователя">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Войти">
+                </div>
+            </div>
         </div>
     </div>
+    </form>
+
 </div>
 
-
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="style/libs/bootstrap/js/bootstrap.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script src="style/js/login.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 
 <script>
-
+    $('#exampleModalCenter').modal({backdrop:'static'});
     <?
     if ($_GET['error'] == 1) :
         print 'alert(1324);
                 document.getElementById("log").value="' . $_GET['login'] . '";';
     endif;
     ?></script>
+
+
 </body>
 </html>
