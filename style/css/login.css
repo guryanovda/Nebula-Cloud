@@ -1,0 +1,32 @@
+body {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    background: url(../img/login.jpg) no-repeat;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+.arrow-box {
+    position: relative;
+    background: #000000;
+    opacity: 0.9;
+}
+.arrow-box:after {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow-box:after {
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: #000000;
+    border-width: 30px;
+    left: 120px;
+    margin-left: -30px;
+
+}

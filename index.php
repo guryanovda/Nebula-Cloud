@@ -1,5 +1,5 @@
 <?php error_reporting(E_ERROR | E_PARSE);
-include ('kernel.php');
+include('kernel.php');
 if ($_SESSION['username'] == "") :
 	header("Location: login.php");
 endif;
@@ -14,7 +14,7 @@ print "<script>var user='" . $_SESSION['username'] . "';</script>";
 		<meta name="author" content="givy">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<LINK rel="stylesheet" href="users/<? print $_SESSION['username']?>/style/workplace.css" type="text/css" />
-		<SCRIPT src="myAPI.js" type="text/javascript"></SCRIPT>
+		<SCRIPT src="kernel/kernel.js" type="text/javascript"></SCRIPT>
 		<SCRIPT src="users/<? print $_SESSION['username']?>/applications/apps.js" type="text/javascript"></SCRIPT>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -65,8 +65,8 @@ print "<script>var user='" . $_SESSION['username'] . "';</script>";
 			})();
 
 		</script>
-		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
-		<script src="bootstrap/js/bootstrap.js"></script>
+		<link href="style/libs/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+		<script src="style/libs/bootstrap/js/bootstrap.js"></script>
 	</head>
 
 	<body id="workplace">

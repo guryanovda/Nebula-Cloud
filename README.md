@@ -1,4 +1,4 @@
-TrollOS-Cloud
+Nebula V Cloud Builder
 =============
 
-a private-cloud application platform with a web-based desktop interface
+Решение для организации частных и гибридных облачных инфраструктур 
