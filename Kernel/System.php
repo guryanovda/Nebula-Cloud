@@ -13,7 +13,7 @@ class System
 {
     public static function systemInit(){
         session_start();
-
+        error_reporting(E_ERROR||E_PARSE);
     }
 
     public static function authorise($login,$password){
@@ -27,5 +27,17 @@ class System
         else{
             return false;
         }
+    }
+
+    public static function authorisationRequired(){
+        if (!System::isAuthorised()) :
+            header("Location: login.php");
+        endif;
+    }
+
+    public static function onlyForAnonimous(){
+        if (System::isAuthorised()) :
+            header("Location: index.php");
+        endif;
     }
 }

@@ -1,8 +1,7 @@
 <?php
-include('Kernel/kernel.php');
-if ($_SESSION["username"] != '') :
-    header("Location: user/" . $_SESSION['username'] . "/index.php");
-endif;
+include('Kernel/System.php');
+\Kernel\System::systemInit();
+\Kernel\System::onlyForAnonimous();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -19,7 +18,7 @@ endif;
 
 <div class="container-fluid">
     <form>
-        <div class="modal fade bd-example-modal-sm" id="exampleModalCenter">
+        <div class="modal fade bd-example-modal-sm" id="loginModal">
 
             <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                 <div class="modal-content">
@@ -66,7 +65,7 @@ endif;
         crossorigin="anonymous"></script>
 
 <script>
-    $('#exampleModalCenter').modal({backdrop: 'static'});
+    $('#loginModal').modal({backdrop: 'static'});
     <?
     if ($_GET['error'] == 1) :
         print 'alert(1324);
