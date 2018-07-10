@@ -1,5 +1,5 @@
 <?php
-include('kernel/kernel.php');
+include('Kernel/kernel.php');
 if ($_SESSION["username"] != '') :
     header("Location: user/" . $_SESSION['username'] . "/index.php");
 endif;
@@ -19,38 +19,38 @@ endif;
 
 <div class="container-fluid">
     <form>
-    <div class="modal fade bd-example-modal-sm" id="exampleModalCenter">
+        <div class="modal fade bd-example-modal-sm" id="exampleModalCenter">
 
-        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Nebula Cloud Builder</h5>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                                <img src="style/img/nebula.png" class="col-12" style="height: 250px">
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <br>
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Имя пользователя">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
-                            </div>
-                            </div>
-                        </div>
+            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Nebula Cloud Builder</h5>
                     </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <img src="style/img/nebula.png" class="col-12" style="height: 250px">
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <br>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Имя пользователя">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Пароль">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-primary" value="Войти">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" value="Войти">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </form>
 
 </div>
@@ -66,7 +66,7 @@ endif;
         crossorigin="anonymous"></script>
 
 <script>
-    $('#exampleModalCenter').modal({backdrop:'static'});
+    $('#exampleModalCenter').modal({backdrop: 'static'});
     <?
     if ($_GET['error'] == 1) :
         print 'alert(1324);
