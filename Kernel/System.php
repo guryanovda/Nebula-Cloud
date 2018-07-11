@@ -31,11 +31,17 @@ class System
 
     public static function authorise($login, $password, $configuration)
     {
+        $_SESSION['loginerror'] = false;
         $array['filename'] = $configuration['Settings']['db_url'];
         $db = new SQLite3($array);
-        $result = $db->Query('SELECT * FROM User WHERE login=$login AND password=$password');
+        $result = $db->First('SELECT * FROM User WHERE login="'.$login.'" AND password="'.$password.'"');
         if ($result){
             $_SESSION['user'] = $login;
+            $_SESSION['loginerror'] = false;
+        }
+        else{
+            $_SESSION['loginerror'] = true;
+            $_SESSION['user'] = '';
         }
     }
 
@@ -64,6 +70,7 @@ class System
 
     public static function deauthorise(){
         $_SESSION['user'] = '';
+        $_SESSION['loginerror'] = false;
         header("Location: login.php");
     }
 }

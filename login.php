@@ -44,7 +44,13 @@ if ($_POST['username'] && $_POST['password']){
                                     <div class="form-group">
                                         <input type="password" name="password" class="form-control" placeholder="<?=$configuration['Translation']['login']['password'] ?>">
                                     </div>
+                                    <?php if ($_SESSION['loginerror']): ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        Ошибка входа
+                                    </div>
+                                    <?php endif ?>
                                 </div>
+
                             </div>
                         </div>
 
