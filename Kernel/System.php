@@ -61,4 +61,9 @@ class System
             header("Location: index.php");
         endif;
     }
+
+    public static function deauthorise(){
+        $_SESSION['user'] = '';
+        header("Location: login.php");
+    }
 }
