@@ -1,12 +1,17 @@
 <?php
 include('Kernel/System.php');
-\Kernel\System::systemInit();
+$configuration = \Kernel\System::systemInit();
+if ($_POST['username'] && $_POST['password']){
+    $login = $_POST['username'];
+    $password = $_POST['password'];
+    \Kernel\System::authorise($login,$password,$configuration);
+}
 \Kernel\System::onlyForAnonimous();
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Nebula V Cloud Builder | Авторизация</title>
+    <title><?=$configuration['System']['system_name'] ?> | <?=$configuration['Translation']['login']['authorisation'] ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="style/css/login.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -17,13 +22,13 @@ include('Kernel/System.php');
 <body>
 
 <div class="container-fluid">
-    <form>
+    <form method="post">
         <div class="modal fade bd-example-modal-sm" id="loginModal">
 
             <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Nebula Cloud Builder</h5>
+                        <h5 class="modal-title"><?=$configuration['System']['system_name'] ?></h5>
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
@@ -34,10 +39,10 @@ include('Kernel/System.php');
                                 <div class="col-12">
                                     <br>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Имя пользователя">
+                                        <input type="text" name="username" class="form-control" placeholder="<?=$configuration['Translation']['login']['username'] ?>">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Пароль">
+                                        <input type="password" name="password" class="form-control" placeholder="<?=$configuration['Translation']['login']['password'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +50,7 @@ include('Kernel/System.php');
 
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-primary" value="Войти">
+                        <input type="submit" class="btn btn-primary" value="<?=$configuration['Translation']['login']['sign_in'] ?>">
                     </div>
                 </div>
             </div>
