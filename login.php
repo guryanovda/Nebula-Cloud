@@ -1,154 +1,80 @@
 <?php
-include ('kernel.php');
-if ($_SESSION["username"] != '') :
-	header("Location: user/" . $_SESSION['username'] . "/index.php");
-endif;
+include('Kernel/System.php');
+$configuration = \Kernel\System::systemInit();
+if ($_POST['username'] && $_POST['password']){
+    $login = $_POST['username'];
+    $password = $_POST['password'];
+    \Kernel\System::authorise($login,$password,$configuration);
+}
+\Kernel\System::onlyForAnonimous();
 ?>
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>TrollOS Project|User Login</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<style>
-			body {
-				-moz-user-select: none;
-				-khtml-user-select: none;
-				user-select: none;
-				background-image: url(login.jpg);
-				background-repeat: no-repeat;
-				background-size: cover;
-				height: 100%;
-				overflow: hidden;
-			}
-				.arrow-box {
-				position: relative;
-				background: #000000;
-				opacity: 0.9;
-			}
-			.arrow-box:after {
-				top: 100%;
-				border: solid transparent;
-				content: " ";
-				height: 0;
-				width: 0;
-				position: absolute;
-				pointer-events: none;
-			}
+<head>
+    <title><?=$configuration['System']['system_name'] ?> | <?=$configuration['Translation']['login']['authorisation'] ?></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="style/css/login.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="style/libs/bootstrap/css/bootstrap.css">
 
-			.arrow-box:after {
-				border-color: rgba(0, 0, 0, 0);
-				border-top-color: #000000;
-				border-width: 30px;
-				left: 120px;
-				margin-left: -30px;
-				
-			}
-		</style>
-		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="bootstrap/js/bootstrap.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	</head>
+</head>
 
-	<body >
-	<img id='logo' src="logo.png" style="position: absolute; bottom: 140px; height: 30px;" />
-	<div style="position: absolute; bottom: 10px; color: #fff; font-size: 120pt;  font-family: Arial;" id="hours"></div>
-	<div style="position: absolute; bottom: 60px; color: #fff; font-size: 12pt;  font-family: Tahoma;" id="week"></div>
-	<div style="position: absolute; bottom: 30px; color: #fff;" id="data"><span style="font-size: 20pt;  font-family: Arial;" id="day"></span><span style="font-size: 20pt;  font-family: Tahoma;" id="month"></span></div>
-	<div id="auth">
-	<div class="arrow-box" id="arrow" style="position: absolute; bottom: 205px; width: 400px;"><br><button class="btn btn-primary" id="regbut" style="position: relative;bottom: 10px; left: 10px; ">Регистрация</button><a style="color:#fff;font-size:8pt;position:absolute;bottom:14px;right:10px;">Забыл пароль? Тебе сюда</a><br></div>
-	<div id='loginform' style="position: absolute; bottom: 250px; height: 180px; width: 400px; background-color: #f5f5f5; border-top-left-radius: 7px; border-top-right-radius: 7px;">
-	<div class="popover-title" style="height: 50px;background-color: #fff;"><span style="position: relative; top: 16px; left:125px; font-size: 16pt; color: #777;">Авторизация</span></div>
-	<div class="popover-content" style="position: absolute; left: 30px;" >
-	<form class="form-horizontal" method="post" action="1.php"> 
-      <input type="text" id="login" name="login" placeholder="login" style="width: 250px;">
-      <input type="password" id="password" name="password" placeholder="password" style="width: 250px;">
-  <input type="submit" style="background: transparent url(ok.png) no-repeat center top; border: 0; position: relative; bottom: 95px; left: 30px; height: 42px; width: 40px" value="" />
-</form>
-	</div>
-	</div>
-	</div>
-	<div id="reg">
-	<div class="arrow-box" id="arrow-reg" style="position: absolute; bottom: 205px; width: 400px;"><br><button id="loginbut" class="btn btn-primary" style="position: relative;bottom: 10px; left: 10px; ">Авторизация</button><a style="color:#fff;font-size:8pt;position:absolute;bottom:14px;right:10px;">Лицензия</a><br></div>
-	<div id='regform' style="position: absolute; bottom: 250px; height: 220px; width: 400px; background-color: #f5f5f5; border-top-left-radius: 7px; border-top-right-radius: 7px;">
-	<div class="popover-title" style="height: 50px; background-color: #fff;"><span style="position: relative; top: 16px; left:125px; font-size: 16pt; color: #777; ">Регистрация</span></div>
-	<div class="popover-content" style="position: absolute; left: 30px; background-color: #f5f5f5;" >
-	<form class="form-horizontal" method="post" action="1.php"> 
-      <input type="text" id="login" name="login" placeholder="login" style="width: 250px; position: absolute; top: 10px;"><br>
-      <input type="password" id="password" name="password" placeholder="password" style="width: 250px; position: absolute; top: 50px;"><br>
-	  <input type="password" id="password-repeat" name="password-2" placeholder="password confirmation" style="width: 250px; position: absolute; top: 90px;">
-  <input type="submit" style="background: transparent url(ok.png) no-repeat center top; border: 0; position: relative; bottom: 105px; left: 300px; height: 42px; width: 40px" value="" />
-</form>
-	</div>
-	</div>
-	</div>
-	<script>
-	var doc_w = $(document).width();
-	doc_w = doc_w/2;
-		doc_w = doc_w-50;
-		document.getElementById('logo').style.right = doc_w + 'px';
-		doc_w = doc_w-50;
-		document.getElementById('hours').style.right = doc_w + 'px';
-		obj_hours=document.getElementById("hours");
-		doc_w = doc_w+210;
-		document.getElementById('week').style.left = doc_w + 'px';
-		obj_week=document.getElementById("week");
-		document.getElementById('data').style.left = doc_w + 'px';
-		doc_w = doc_w-340;
-		document.getElementById('arrow').style.right = doc_w + 'px';
-		document.getElementById('loginform').style.right = doc_w + 'px';
-		document.getElementById('arrow-reg').style.right = doc_w + 'px';
-		document.getElementById('regform').style.right = doc_w + 'px';
-		obj_day=document.getElementById("day");
-		obj_month=document.getElementById("month");
-		name_month=new Array ("Января","Февраля","Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря");
-		name_day=new Array ("Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота");
+<body>
 
-		function wr_hours()
-		{
-		time=new Date();
+<div class="container-fluid">
+    <form method="post">
+        <div class="modal fade bd-example-modal-sm" id="loginModal">
 
-		time_min=time.getMinutes();
-		time_hours=time.getHours();
-		time_wr=((time_hours<10)?"0":"")+time_hours;
-		time_wr+=":";
-		time_wr+=((time_min<10)?"0":"")+time_min;
-		obj_hours.innerHTML=time_wr;
-		obj_week.innerHTML=name_day[time.getDay()];
-		obj_day.innerHTML=time.getDate()+' ';
-		obj_month.innerHTML=name_month[time.getMonth()];
-		time_wr=""+name_day[time.getDay()]+time.getDate()+name_month[time.getMonth()]+" "+time.getFullYear()+""+time_wr;
+            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><?=$configuration['System']['system_name'] ?></h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <img src="style/img/nebula.png" class="col-12" style="height: 250px">
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <br>
+                                    <div class="form-group">
+                                        <input type="text" name="username" class="form-control" placeholder="<?=$configuration['Translation']['login']['username'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" class="form-control" placeholder="<?=$configuration['Translation']['login']['password'] ?>">
+                                    </div>
+                                    <?php if ($_SESSION['loginerror']): ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        Ошибка входа
+                                    </div>
+                                    <?php endif ?>
+                                </div>
 
-		//obj_hours.innerHTML=time_wr;
-		}
+                            </div>
+                        </div>
 
-		wr_hours();
-		setInterval("wr_hours();",1000);
-		
-		  $( "#regform" ).hide();
-  $( "#arrow-reg" ).hide();
-		
-		
-		$( "#regbut" ).click(function() {
-		
-  $( "#loginform" ).hide( "drop", { direction: "left" }, "fast" );
-  $( "#arrow" ).hide( "drop", { direction: "left" }, "fast" );
-$( "#regform" ).show( "drop", { direction: "right" }, "slow" );
-  $( "#arrow-reg" ).show( "drop", { direction: "right" }, "slow" ); 
-});
-		$( "#loginbut" ).click(function() {
-		
-  $( "#regform" ).hide( "drop", { direction: "right" }, "fast" );
-  $( "#arrow-reg" ).hide( "drop", { direction: "right" }, "fast" );
-$( "#loginform" ).show( "drop", { direction: "left" }, "slow" );
-  $( "#arrow" ).show( "drop", { direction: "left" }, "slow" ); 
-});
-		</script>
-		<?
-if ($_GET['error'] == 1) :
-	print 'alert(' . $_SESSION['loginerror'] . ');
-document.getElementById("log").value="' . $_GET['login'] . '";';
-endif;
-?></script>
-	</body>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" value="<?=$configuration['Translation']['login']['sign_in'] ?>">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="style/libs/bootstrap/js/bootstrap.js"></script>
+
+<script>
+    $('#loginModal').modal({backdrop: 'static'});
+</script>
+
+</body>
 </html>

@@ -1,0 +1,5 @@
+body{
+	user-select: none;
+	background: url(../img/wlp.jpg) no-repeat;
+	background-size: cover;
+}
